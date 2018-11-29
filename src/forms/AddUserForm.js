@@ -1,23 +1,24 @@
 import React, { useState } from 'react'
 
 const AddUserForm = props => {
-	const initialFormState = { id: null, name: '', username: '' }
-	const [ user, setUser ] = useState(initialFormState)
+	const initialFormState = { id: null, name: '', username: '' };
+	const [user, setUser] = useState(initialFormState);
 
 	const handleInputChange = event => {
-		const { name, value } = event.target
-
-		setUser({ ...user, [name]: value })
+		event.target.style.backgroundColor = 'white';
+		const { name, value } = event.target;
+		setUser({ ...user, [name]: value });
 	}
 
 	return (
 		<form
 			onSubmit={event => {
-				event.preventDefault()
+				event.preventDefault();
+				[...document.getElementsByTagName('input')].map(e => e.style.backgroundColor = "lightblue");
 				if (!user.name || !user.username) return
 
-				props.addUser(user)
-				setUser(initialFormState)
+				props.addUser(user);
+				setUser(initialFormState);
 			}}
 		>
 			<label>Name</label>

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
-const EditUserForm = props => {
+const SearchUser = props => {
   const [user, setUser] = useState(props.currentUser)
 
   useEffect(
     () => {
-      setUser(props.currentUser)
+      setUser(props.currentUser);
+      [...document.getElementsByTagName('div')].map(e => e.style.color = 'lightblue');
     },
     [props]
   )
@@ -20,8 +21,9 @@ const EditUserForm = props => {
   return (
     <form
       onSubmit={event => {
-        event.preventDefault();
-        props.updateUser(user.id, user);
+        event.preventDefault()
+
+        props.updateUser(user.id, user)
       }}
     >
       <label>Name</label>
@@ -36,4 +38,4 @@ const EditUserForm = props => {
   )
 }
 
-export default EditUserForm
+export default SearchUser

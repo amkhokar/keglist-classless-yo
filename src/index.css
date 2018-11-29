@@ -3,3 +3,9 @@ button,
 	margin-bottom: 0 !important;
 	margin-right: .5rem;
 }
+
+body {
+	background-color: lightblue;
+	color: white;
+	font-size: 24px;
+}
