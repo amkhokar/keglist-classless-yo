@@ -6,37 +6,38 @@ import KegTable from './tables/KegTable';
 const App = () => {
 	// Data
 	const kegsData = [
-		{ id: 1, name: 'Ahmed', username: 'bongo' },
-		{ id: 2, name: 'Chan', username: 'gangnamStyle' },
-		{ id: 3, name: 'Derek', username: 'whitedude41' },
+		{ id: 1, name: 'Derek Dubble', brewer: 'Old Mountain', alcohol: 8, quantity: 15 },
+		{ id: 2, name: 'Chan City IPA', brewer: 'Old Mountain', alcohol: 8, quantity: 15 },
+		{ id: 3, name: 'Ryan Lager', brewer: 'Old Mountain', alcohol: 8, quantity: 15 }
 	];
 
-	const initialFormState = { id: null, name: '', username: '' };
-
-	// Setting state
+	const initialFormState = { id: '', name: '', brewer: '', alcohol: '', quantity: '' };
 	const [kegs, setKegs] = useState(kegsData);
 	const [currentKeg, setCurrentKeg] = useState(initialFormState);
 	const [editing, setEditing] = useState(false);
-	// CRUD operations
 	const addKeg = keg => {
 		keg.id = kegs.length + 1;
 		setKegs([...kegs, keg]);
 	};
-
 	const deleteKeg = id => {
 		setEditing(false);
 		setKegs(kegs.filter(keg => keg.id !== id))
 	};
-
 	const updateKeg = (id, updatedKeg) => {
 		setEditing(false);
 		setKegs(kegs.map(keg => (keg.id === id ? updatedKeg : keg)))
 	};
-
 	const editRow = keg => {
 		setEditing(true);
-		setCurrentKeg({ id: keg.id, name: keg.name, username: keg.username })
+		setCurrentKeg({ id: keg.id, name: keg.name, brewer: keg.brewer, alc: keg.alcohol, quantity: keg.quantity });
 	};
+
+	const updateQuantityUp = keg => {
+		setCurrentKeg({ id: keg.id, name: keg.name, brewer: keg.brewer, alc: keg.alcohol, quantity: keg.quantity + 1 });
+	}
+	const updateQuantityDown = keg => {
+		setCurrentKeg({ id: keg.id, name: keg.name, brewer: keg.brewer, alc: keg.alcohol, quantity: keg.quantity - 1 });
+	}
 
 	return (
 		<div className="container">
@@ -45,7 +46,7 @@ const App = () => {
 				<div className="flex-large">
 					{editing ? (
 						<Fragment>
-							<h2>Edit user</h2>
+							<h2>Edit Keg</h2>
 							<EditKegForm
 								editing={editing}
 								setEditing={setEditing}
@@ -62,7 +63,7 @@ const App = () => {
 				</div>
 				<div className="flex-large">
 					<h2>View kegs</h2>
-					<KegTable kegs={kegs} editRow={editRow} deleteKeg={deleteKeg} />
+					<KegTable kegs={kegs} editRow={editRow} deleteKeg={deleteKeg} updateQuantityDown={updateQuantityDown} updateQuantityUp={updateQuantityUp} />
 				</div>
 			</div>
 		</div>

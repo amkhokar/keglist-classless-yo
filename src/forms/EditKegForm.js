@@ -22,7 +22,11 @@ const EditKegForm = props => {
       <label>Keg Name</label>
       <input type="text" name="name" value={keg.name} onChange={handleInputChange} />
       <label>Brewer</label>
-      <input type="text" name="brewer" value={keg.username} onChange={handleInputChange} />
+      <input type="text" name="brewer" value={keg.brewer} onChange={handleInputChange} />
+      <label>Alcohol Content</label>
+      <input type="text" name="alcohol" value={keg.alcohol} onChange={handleInputChange} />
+      <label>Quantity</label>
+      <input type="text" name="quantity" value={keg.quantity} onChange={handleInputChange} />
       <button>Update Keg</button>
       <button onClick={() => props.setEditing(false)} className="button muted-button">
         Cancel
