@@ -1,8 +1,8 @@
-# React CRUD App with Hooks
-
+# Keg List With Hooks
 Running React 16.7.0-alpha
+User will be able to :
 
-- View all users
-- Add a new user
-- Delete a user
-- Edit an existing user
+1. View all kegs
+2. Update any keg
+3. Delete any Keg
+4. Add any keg
