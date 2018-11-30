@@ -1,72 +1,68 @@
-import React, { useState, Fragment } from 'react'
-import AddUserForm from './forms/AddUserForm'
-import EditUserForm from './forms/EditUserForm'
-import UserTable from './tables/UserTable'
+import React, { useState, Fragment } from 'react';
+import AddKegForm from './forms/AddKegForm';
+import EditKegForm from './forms/EditKegForm';
+import KegTable from './tables/KegTable';
 
 const App = () => {
 	// Data
-	const usersData = [
+	const kegsData = [
 		{ id: 1, name: 'Ahmed', username: 'bongo' },
 		{ id: 2, name: 'Chan', username: 'gangnamStyle' },
 		{ id: 3, name: 'Derek', username: 'whitedude41' },
-	]
+	];
 
-	const initialFormState = { id: null, name: '', username: '' }
+	const initialFormState = { id: null, name: '', username: '' };
 
 	// Setting state
-	const [users, setUsers] = useState(usersData)
-	const [currentUser, setCurrentUser] = useState(initialFormState)
-	const [editing, setEditing] = useState(false)
-
+	const [kegs, setKegs] = useState(kegsData);
+	const [currentKeg, setCurrentKeg] = useState(initialFormState);
+	const [editing, setEditing] = useState(false);
 	// CRUD operations
-	const addUser = user => {
-		user.id = users.length + 1
-		setUsers([...users, user])
-	}
+	const addKeg = keg => {
+		keg.id = kegs.length + 1;
+		setKegs([...kegs, keg]);
+	};
 
-	const deleteUser = id => {
-		setEditing(false)
+	const deleteKeg = id => {
+		setEditing(false);
+		setKegs(kegs.filter(keg => keg.id !== id))
+	};
 
-		setUsers(users.filter(user => user.id !== id))
-	}
+	const updateKeg = (id, updatedKeg) => {
+		setEditing(false);
+		setKegs(kegs.map(keg => (keg.id === id ? updatedKeg : keg)))
+	};
 
-	const updateUser = (id, updatedUser) => {
-		setEditing(false)
-
-		setUsers(users.map(user => (user.id === id ? updatedUser : user)))
-	}
-
-	const editRow = user => {
-		setEditing(true)
-
-		setCurrentUser({ id: user.id, name: user.name, username: user.username })
-	}
+	const editRow = keg => {
+		setEditing(true);
+		setCurrentKeg({ id: keg.id, name: keg.name, username: keg.username })
+	};
 
 	return (
 		<div className="container">
-			<h1>CRUD App with Hooks</h1>
+			<h1>Welcome to Ahmed's Taproom</h1>
 			<div className="flex-row">
 				<div className="flex-large">
 					{editing ? (
 						<Fragment>
 							<h2>Edit user</h2>
-							<EditUserForm
+							<EditKegForm
 								editing={editing}
 								setEditing={setEditing}
-								currentUser={currentUser}
-								updateUser={updateUser}
+								currentKeg={currentKeg}
+								updateKeg={updateKeg}
 							/>
 						</Fragment>
 					) : (
 							<Fragment>
-								<h2>Add user</h2>
-								<AddUserForm addUser={addUser} />
+								<h2>Add keg</h2>
+								<AddKegForm addKeg={addKeg} />
 							</Fragment>
 						)}
 				</div>
 				<div className="flex-large">
-					<h2>View users</h2>
-					<UserTable users={users} editRow={editRow} deleteUser={deleteUser} />
+					<h2>View kegs</h2>
+					<KegTable kegs={kegs} editRow={editRow} deleteKeg={deleteKeg} />
 				</div>
 			</div>
 		</div>

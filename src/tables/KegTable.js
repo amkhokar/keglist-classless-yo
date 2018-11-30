@@ -1,31 +1,31 @@
 import React from 'react'
 
-const UserTable = props => (
+const KegTable = props => (
   <table>
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Username</th>
+        <th>Keg Name</th>
+        <th>Brewer</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      {props.users.length > 0 ? (
-        props.users.map(user => (
-          <tr key={user.id}>
-            <td>{user.name}</td>
-            <td>{user.username}</td>
+      {props.kegs.length > 0 ? (
+        props.kegs.map(keg => (
+          <tr key={keg.id}>
+            <td>{keg.name}</td>
+            <td>{keg.username}</td>
             <td>
               <button
                 onClick={() => {
-                  props.editRow(user)
+                  props.editRow(keg)
                 }}
                 className="button muted-button"
               >
                 Edit
               </button>
               <button
-                onClick={() => props.deleteUser(user.id)}
+                onClick={() => props.deleteKeg(keg.id)}
                 className="button muted-button"
               >
                 Delete
@@ -34,12 +34,12 @@ const UserTable = props => (
           </tr>
         ))
       ) : (
-        <tr>
-          <td colSpan={3}>No users</td>
-        </tr>
-      )}
+          <tr>
+            <td colSpan={3}>No kegs</td>
+          </tr>
+        )}
     </tbody>
   </table>
 )
 
-export default UserTable
+export default KegTable

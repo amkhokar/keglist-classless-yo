@@ -6,7 +6,7 @@ const SearchUser = props => {
   useEffect(
     () => {
       setUser(props.currentUser);
-      [...document.getElementsByTagName('div')].map(e => e.style.color = 'lightblue');
+      [...document.getElementsByTagName('div')].map(e => e.parentElement.style.color = 'lightblue');
     },
     [props]
   )
