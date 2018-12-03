@@ -23,7 +23,7 @@ const KegTable = props => (
                 onClick={() => {
                   props.editRow(keg);
                 }}
-                className="button"
+                className="button square-button"
               >
                 Edit
               </button>
@@ -31,7 +31,7 @@ const KegTable = props => (
                 onClick={() => {
                   props.updateQuantityDown(keg.id, keg);
                 }}
-                className="button"
+                className="button square-button"
               >
                 Lower
               </button>
@@ -39,13 +39,13 @@ const KegTable = props => (
                 onClick={() => {
                   props.updateQuantityUp(keg.id, keg);
                 }}
-                className="button"
+                className="button square-button"
               >
                 Higher
               </button>
               <button
                 onClick={() => props.deleteKeg(keg.id)}
-                className="button"
+                className="button square-button"
               >
                 Delete
               </button>

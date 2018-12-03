@@ -530,8 +530,8 @@ a.muted-button {
   a.muted-button:active {
     color: #4e4e4e;
     border: 1px solid #818181;
-    background: transparent; }
-
+    background-color: red;
+  }
 .round-button,
 a.round-button {
   border-radius: 40px; }
