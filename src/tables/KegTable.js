@@ -30,8 +30,7 @@ const KegTable = props => (
               </button>
               <button
                 onClick={() => {
-                  keg.quantity--;
-                  props.updateQuantityDown(keg);
+                  props.updateQuantityDown(keg.id, keg);
                 }}
                 className="button muted-button"
               >
@@ -39,9 +38,7 @@ const KegTable = props => (
               </button>
               <button
                 onClick={() => {
-                  keg.quantity++;
-                  props.updateQuantityUp(keg);
-                  console.log(keg.quantity);
+                  props.updateQuantityUp(keg.id, keg);
                 }}
                 className="button muted-button"
               >
@@ -65,4 +62,4 @@ const KegTable = props => (
   </table>
 )
 
-export default KegTable
+export default KegTable;

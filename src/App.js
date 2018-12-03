@@ -11,9 +11,9 @@ const App = () => {
 		{ id: 3, name: 'Ryan Lager', brewer: 'Old Mountain', alcohol: 8, quantity: 15 }
 	];
 
-	const initialFormState = { id: '', name: '', brewer: '', alcohol: '', quantity: '' };
+	const initialKeg = { currentKeg: "" };
 	const [kegs, setKegs] = useState(kegsData);
-	const [currentKeg, setCurrentKeg] = useState(initialFormState);
+	const [currentKeg, setCurrentKeg] = useState(initialKeg);
 	const [editing, setEditing] = useState(false);
 	const addKeg = keg => {
 		keg.id = kegs.length + 1;
@@ -21,23 +21,31 @@ const App = () => {
 	};
 	const deleteKeg = id => {
 		setEditing(false);
-		setKegs(kegs.filter(keg => keg.id !== id))
+		setKegs(kegs.filter(keg => keg.id !== id));
 	};
 	const updateKeg = (id, updatedKeg) => {
 		setEditing(false);
-		setKegs(kegs.map(keg => (keg.id === id ? updatedKeg : keg)))
+		setKegs(kegs.map(keg => (keg.id === id ? updatedKeg : keg)));
 	};
 	const editRow = keg => {
 		setEditing(true);
-		setCurrentKeg({ id: keg.id, name: keg.name, brewer: keg.brewer, alc: keg.alcohol, quantity: keg.quantity });
+		setCurrentKeg({ ...keg, id: keg.id, name: keg.name, brewer: keg.brewer, alc: keg.alcohol, quantity: keg.quantity });
 	};
 
-	const updateQuantityUp = keg => {
-		setCurrentKeg({ id: keg.id, name: keg.name, brewer: keg.brewer, alc: keg.alcohol, quantity: keg.quantity + 1 });
-	}
-	const updateQuantityDown = keg => {
-		setCurrentKeg({ id: keg.id, name: keg.name, brewer: keg.brewer, alc: keg.alcohol, quantity: keg.quantity - 1 });
-	}
+	const updateQuantityUp = (id, updatedKeg) => {
+		updatedKeg.quantity++;
+		setKegs(kegs.map(keg => (keg.id === id ? updatedKeg : keg)));
+		setEditing(false);
+	};
+	const updateQuantityDown = (id, updatedKeg) => {
+		updatedKeg.quantity--;
+		if (updatedKeg.quantity <= 0) {
+			deleteKeg(id);
+		} else {
+			setKegs(kegs.map(keg => (keg.id === id ? updatedKeg : keg)));
+			setEditing(false);
+		}
+	};
 
 	return (
 		<div className="container">
@@ -70,4 +78,4 @@ const App = () => {
 	)
 }
 
-export default App
+export default App;
