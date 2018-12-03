@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 const AddKegForm = props => {
 	const initialFormState = { id: '', name: '', brewer: '', alcohol: '', quantity: '' };
 	const [keg, setKeg] = useState(initialFormState);
@@ -27,5 +27,4 @@ const AddKegForm = props => {
 		</form>
 	);
 };
-
 export default AddKegForm;

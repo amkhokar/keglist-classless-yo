@@ -28,15 +28,23 @@ const KegTable = props => (
                 Edit
               </button>
               <button
-                onClick={() => {
+                id="lower"
+                onClick={(e) => {
                   props.updateQuantityDown(keg.id, keg);
+                  if (keg.quantity === 1) {
+                    e.target.style.backgroundColor = "red";
+                  }
                 }}
                 className="button square-button"
               >
                 Lower
               </button>
               <button
+                id="higher"
                 onClick={() => {
+                  if (keg.quantity === 1) {
+                    document.getElementById('lower').style.backgroundColor = "#0366EE";
+                  }
                   props.updateQuantityUp(keg.id, keg);
                 }}
                 className="button square-button"
