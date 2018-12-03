@@ -16,8 +16,8 @@ const KegTable = props => (
           <tr key={keg.id}>
             <td>{keg.name}</td>
             <td>{keg.brewer}</td>
-            <td>{keg.alcohol ? keg.alcohol + '%' : keg.alcohol}</td>
-            <td>{keg.quantity}</td>
+            <td style={keg.alcohol > 20 ? { color: 'red' } : { color: 'green' }}>{keg.alcohol ? keg.alcohol + '%' : keg.alcohol}</td>
+            <td style={keg.quantity <= 1 ? { color: 'red' } : {}}>{keg.quantity}</td>
             <td>
               <button
                 onClick={() => {
@@ -28,11 +28,12 @@ const KegTable = props => (
                 Edit
               </button>
               <button
-                id="lower"
+                style={keg.quantity <= 1 ? { backgroundColor: 'red' } : { backgroundColor: '#0366EE' }}
+                id={`lower${keg.id}`}
                 onClick={(e) => {
                   props.updateQuantityDown(keg.id, keg);
                   if (keg.quantity === 1) {
-                    e.target.style.backgroundColor = "red";
+                    document.getElementById(`lower${keg.id}`).style.backgroundColor = "red";
                   }
                 }}
                 className="button square-button"
@@ -40,10 +41,10 @@ const KegTable = props => (
                 Lower
               </button>
               <button
-                id="higher"
+                id={`higher${keg.id}`}
                 onClick={() => {
                   if (keg.quantity === 1) {
-                    document.getElementById('lower').style.backgroundColor = "#0366EE";
+                    document.getElementById(`lower${keg.id}`).style.backgroundColor = "#0366EE";
                   }
                   props.updateQuantityUp(keg.id, keg);
                 }}

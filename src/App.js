@@ -6,9 +6,9 @@ import KegTable from './tables/KegTable';
 const App = () => {
 	// Data
 	const kegsData = [
-		{ id: 1, name: 'Derek Dubble', brewer: 'Old Mountain', alcohol: 8, quantity: 15 },
-		{ id: 2, name: 'Chan City IPA', brewer: 'Old Mountain', alcohol: 8, quantity: 15 },
-		{ id: 3, name: 'Ryan Lager', brewer: 'Old Mountain', alcohol: 8, quantity: 15 }
+		{ id: 1, name: 'Derek Dubble', brewer: 'Old Mountain', alcohol: 8, quantity: 5 },
+		{ id: 2, name: 'Chan City IPA', brewer: 'Old Mountain', alcohol: 15, quantity: 10 },
+		{ id: 3, name: 'Ryan Lager', brewer: 'Old Mountain', alcohol: 30, quantity: 15 }
 	];
 
 	const initialKeg = { currentKeg: "" };
