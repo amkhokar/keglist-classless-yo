@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-
+import React, { useState, useEffect } from 'react';
 const EditKegForm = props => {
   const [keg, setKeg] = useState(props.currentKeg);
   useEffect(
@@ -11,7 +10,7 @@ const EditKegForm = props => {
   const handleInputChange = event => {
     const { name, value } = event.target;
     setKeg({ ...keg, [name]: value });
-  }
+  };
   return (
     <form
       onSubmit={event => {
@@ -32,7 +31,6 @@ const EditKegForm = props => {
         Cancel
       </button>
     </form>
-  )
-}
-
-export default EditKegForm
+  );
+};
+export default EditKegForm;

@@ -1,5 +1,4 @@
 import React from 'react';
-
 const KegTable = props => (
   <table>
     <thead>
@@ -24,7 +23,7 @@ const KegTable = props => (
                 onClick={() => {
                   props.editRow(keg);
                 }}
-                className="button muted-button"
+                className="button"
               >
                 Edit
               </button>
@@ -32,7 +31,7 @@ const KegTable = props => (
                 onClick={() => {
                   props.updateQuantityDown(keg.id, keg);
                 }}
-                className="button muted-button"
+                className="button"
               >
                 Lower
               </button>
@@ -40,13 +39,13 @@ const KegTable = props => (
                 onClick={() => {
                   props.updateQuantityUp(keg.id, keg);
                 }}
-                className="button muted-button"
+                className="button"
               >
                 Higher
               </button>
               <button
                 onClick={() => props.deleteKeg(keg.id)}
-                className="button muted-button"
+                className="button"
               >
                 Delete
               </button>
@@ -60,6 +59,6 @@ const KegTable = props => (
         )}
     </tbody>
   </table>
-)
+);
 
 export default KegTable;

@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
-
 const AddKegForm = props => {
 	const initialFormState = { id: '', name: '', brewer: '', alcohol: '', quantity: '' };
 	const [keg, setKeg] = useState(initialFormState);
-
 	const handleInputChange = event => {
 		const { name, value } = event.target;
 		setKeg({ ...keg, [name]: value });
 	};
-
 	return (
 		<form
 			onSubmit={event => {
@@ -28,7 +25,7 @@ const AddKegForm = props => {
 			<input type="text" name="quantity" value={keg.quantity} onChange={handleInputChange} />
 			<button>Add new keg</button>
 		</form>
-	)
-}
+	);
+};
 
-export default AddKegForm
+export default AddKegForm;
