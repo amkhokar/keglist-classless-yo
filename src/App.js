@@ -4,7 +4,6 @@ import EditKegForm from './forms/EditKegForm';
 import KegTable from './tables/KegTable';
 
 const App = () => {
-	// Data
 	const kegsData = [
 		{ id: 1, name: 'Derek Dubble', brewer: 'Old Mountain', alcohol: 8, quantity: 5 },
 		{ id: 2, name: 'Chan City IPA', brewer: 'Old Mountain', alcohol: 15, quantity: 10 },
@@ -31,15 +30,16 @@ const App = () => {
 		setEditing(true);
 		setCurrentKeg({ ...keg, id: keg.id, name: keg.name, brewer: keg.brewer, alc: keg.alcohol, quantity: keg.quantity });
 	};
-
 	const updateQuantityUp = (id, updatedKeg) => {
 		updatedKeg.quantity++;
 		setKegs(kegs.map(keg => (keg.id === id ? updatedKeg : keg)));
 		setEditing(false);
 	};
+
 	const updateQuantityDown = (id, updatedKeg) => {
 		updatedKeg.quantity--;
 		if (updatedKeg.quantity <= 0) {
+			alert(`${updatedKeg.name} is out!`);
 			deleteKeg(id);
 		} else {
 			setKegs(kegs.map(keg => (keg.id === id ? updatedKeg : keg)));

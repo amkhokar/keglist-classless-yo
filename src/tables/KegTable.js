@@ -23,20 +23,20 @@ const KegTable = props => (
                 onClick={() => {
                   props.editRow(keg);
                 }}
-                className="button square-button"
+                className="button round-button"
               >
                 Edit
               </button>
               <button
-                style={keg.quantity <= 1 ? { backgroundColor: 'red' } : { backgroundColor: '#0366EE' }}
+                style={keg.quantity <= 1 ? { backgroundColor: 'red', fontWeight: "bold" } : { backgroundColor: '#0366EE' }}
                 id={`lower${keg.id}`}
-                onClick={(e) => {
+                onClick={() => {
                   props.updateQuantityDown(keg.id, keg);
                   if (keg.quantity === 1) {
                     document.getElementById(`lower${keg.id}`).style.backgroundColor = "red";
                   }
                 }}
-                className="button square-button"
+                className="button round-button"
               >
                 Lower
               </button>
@@ -48,13 +48,13 @@ const KegTable = props => (
                   }
                   props.updateQuantityUp(keg.id, keg);
                 }}
-                className="button square-button"
+                className="button round-button"
               >
                 Higher
               </button>
               <button
                 onClick={() => props.deleteKeg(keg.id)}
-                className="button square-button"
+                className="button round-button"
               >
                 Delete
               </button>
